@@ -1,0 +1,40 @@
+
+plugins {
+    id 'net.minecraftforge.gradle' version '[6.0.24,6.2)'
+    id 'eclipse'
+    id 'maven-publish'
+}
+group = 'com.knoxhack.ezi'
+version = '2.0.0'
+archivesBaseName = 'ezi'
+
+minecraft {
+    mappings channel: 'official', version: '1.21.5'
+    runs {
+        client {
+            workingDirectory project.file('run')
+            mods {
+                ezi {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.21.5-55.0.0'
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title': 'ezi',
+            'Specification-Vendor': 'knoxhack',
+            'Specification-Version': '2',
+            'Implementation-Title': project.name,
+            'Implementation-Version': project.version,
+            'Implementation-Vendor': 'knoxhack'
+        ])
+    }
+}
